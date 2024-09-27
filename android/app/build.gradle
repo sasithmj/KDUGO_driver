@@ -93,6 +93,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('kdugodriver.keystore')
+            storePassword 'test1234'
+            keyAlias 'your_key_alias'
+            keyPassword 'test1234'
+        }
     }
     buildTypes {
         debug {
@@ -104,6 +110,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 }

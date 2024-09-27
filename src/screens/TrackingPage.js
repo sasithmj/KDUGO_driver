@@ -84,6 +84,9 @@ export default function TrackingPage() {
     if (watchId !== null) {
       Geolocation.clearWatch(watchId);
       setWatchId(null);
+      updateDoc(doc(db, 'busLocation', 'currentLocation'), {
+        isTracking: false,
+      }).catch(error => console.error('Error updating location:', error));
     }
   };
 
@@ -92,6 +95,7 @@ export default function TrackingPage() {
       latitude: coords.latitude,
       longitude: coords.longitude,
       timestamp: Date.now(),
+      isTracking: true,
     }).catch(error => console.error('Error updating location:', error));
   };
 
