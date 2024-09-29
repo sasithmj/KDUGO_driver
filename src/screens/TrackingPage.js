@@ -72,7 +72,7 @@ export default function TrackingPage() {
       {
         enableHighAccuracy: true,
         distanceFilter: 10,
-        interval: 30000,
+        interval: 5000,
         fastestInterval: 2000,
       },
     );

@@ -12,9 +12,13 @@ export default function NextInterchange({interchangeList, onMarkPassed}) {
   };
 
   const resetInterchanges = async () => {
-    const updates = interchangeList.map(interchange =>
-      updateDoc(doc(db, 'interchanges', interchange.name), {
-        passed: false,
+    const updates = interchangeList.map(
+      interchange =>
+        updateDoc(doc(db, 'interchanges', interchange.name), {
+          passed: false,
+        }),
+      updateDoc(doc(db, 'busLocation', 'currentLocation'), {
+        isTracking: false,
       }),
     );
 
